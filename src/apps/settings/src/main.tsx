@@ -8,7 +8,7 @@ import "./i18n";
 const rootElement = document?.getElementById("root");
 ReactDOM.createRoot(rootElement as HTMLElement).render(
   <React.StrictMode>
-    <ChakraProvider theme={customTheme}>
+    <ChakraProvider value={customTheme}>
       <App />
     </ChakraProvider>
   </React.StrictMode>,
