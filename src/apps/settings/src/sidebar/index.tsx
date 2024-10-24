@@ -3,7 +3,7 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-import { GridItem, VStack, Divider } from "@chakra-ui/react";
+import { GridItem, VStack, Separator } from "@chakra-ui/react";
 import MenuItem from "../components/MenuItem";
 import { useMediaQuery } from "@chakra-ui/react";
 import { useLocation } from "react-router-dom";
@@ -12,7 +12,7 @@ import { useEffect } from "react";
 import { useTranslation } from "react-i18next";
 
 function Sidebar() {
-  const [isMobile] = useMediaQuery("(max-width: 768px)");
+  const [isMobile] = useMediaQuery(["(max-width: 768px)"], { ssr: true });
   const location = useLocation();
   const pageData = usePageData();
   const { t } = useTranslation();
@@ -37,7 +37,7 @@ function Sidebar() {
       position={"fixed"}
       overflowY={"scroll"}
     >
-      <VStack align="stretch" spacing={2}>
+      <VStack align="stretch" gap={2}>
         {Object.keys(usePageData()).map((key) => {
           return (
             <MenuItem
@@ -52,7 +52,7 @@ function Sidebar() {
             />
           );
         })}
-        <Divider />
+        <Separator />
         <MenuItem
           icon={
             <IconMdiSettings
