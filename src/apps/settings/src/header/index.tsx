@@ -88,8 +88,12 @@ function Header() {
       </HStack>
       <Spacer />
       <MenuRoot>
-        <MenuTrigger style={{ fontSize: "16px", color: "currentColor" }}>
-          <IconIcRoundLanguage />
+        <MenuTrigger>
+          <IconButton aria-label={t("header.darkMode")}>
+            <IconIcRoundLanguage
+              style={{ fontSize: "16px", color: "currentColor" }}
+            />
+          </IconButton>
         </MenuTrigger>
         <MenuContent>
           <MenuItem onClick={() => i18n.changeLanguage("ja")} value="ja">
@@ -104,9 +108,10 @@ function Header() {
         aria-label={t("header.darkMode")}
         onClick={toggleColorMode}
         mx={4}
-        style={{ fontSize: "16px", color: "currentColor" }}
       >
-        <IconLineMdLightDark />
+        <IconLineMdLightDark
+          style={{ fontSize: "16px", color: "currentColor" }}
+        />
       </IconButton>
     </Flex>
   );
