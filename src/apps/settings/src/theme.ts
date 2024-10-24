@@ -1,54 +1,38 @@
-import { extendTheme, type StyleFunctionProps } from "@chakra-ui/react";
-import { mode } from "@chakra-ui/theme-tools";
+import {
+  createSystem,
+  defaultBaseConfig,
+  defineTokens,
+  type SystemConfig,
+} from "@chakra-ui/react";
 
-const colors = {
-  blue: {
-    400: "#8ab4f8",
-    500: "#3182F6",
-    600: "#2b6cb0",
+const customColorConfig: SystemConfig = {
+  theme: {
+    tokens: {
+      colors: defineTokens.colors({
+        blue: {
+          400: { value: "#8ab4f8" },
+          500: { value: "#3182F6" },
+          600: { value: "#2b6cb0" },
+        },
+      }),
+    },
   },
-};
-
-const createGlobalStyles = (props: Record<string, unknown>) => ({
-  body: {
-    color: mode("chakra-ui-text-color", "whiteAlpha.900")(props),
-    bg: mode("chakra-ui-body-bg", "#1a1a1a")(props),
-  },
-});
-
-const createDrawerStyles = (
-  props: StyleFunctionProps | Record<string, unknown>,
-) => ({
-  dialog: {
-    bg: mode("chakra-ui-body-bg", "#141214")(props),
-  },
-});
-
-const SwitchStyles = {
-  baseStyle: (props: StyleFunctionProps) => ({
-    track: {
-      bg: mode("gray.200", "gray.700")(props),
+  globalCss: {
+    body: {
+      color: { base: "chakra-ui-text-color", _dark: "whiteAlpha.900" },
+      bg: { base: "chakra-ui-body-bg", _dark: "#1a1a1a" },
+    },
+    dialog: {
+      bg: { base: "chakra-ui-body-bg", _dark: "#141214" },
+    },
+    switch: {
+      bg: { base: "gray.200", _dark: "gray.700" },
       _checked: {
-        bg: mode("blue.500", "blue.600")(props),
+        bg: { base: "blue.500", _dark: "blue.600" },
       },
     },
-  }),
+  },
 };
 
-const customTheme = extendTheme({
-  config: {
-    initialColorMode: "system",
-  },
-  styles: {
-    global: createGlobalStyles,
-  },
-  components: {
-    Drawer: {
-      baseStyle: createDrawerStyles,
-    },
-    Switch: SwitchStyles,
-  },
-  colors,
-});
-
+const customTheme = createSystem(defaultBaseConfig, customColorConfig);
 export default customTheme;
