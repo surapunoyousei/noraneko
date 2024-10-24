@@ -7,11 +7,11 @@ import {
   Flex,
   VStack,
   Text,
-  Avatar,
   Grid,
   GridItem,
-  Progress,
+  ProgressRoot,
 } from "@chakra-ui/react";
+import { Avatar } from "../../components/ui/avatar";
 import Card from "../../components/Card";
 import { useHomeData } from "./utils";
 import { useTranslation } from "react-i18next";
@@ -32,7 +32,7 @@ export default function Home() {
 
   return (
     <GridItem display="flex" justifyContent="center">
-      <VStack align="stretch" alignItems="center" maxW={"900px"} spacing={6}>
+      <VStack align="stretch" alignItems="center" maxW={"900px"} gap={6}>
         <Flex alignItems="center" flexDirection={"column"}>
           <Avatar size="xl" src={homeData?.accountImage} m={4} />
           <Text fontSize="3xl">
@@ -63,7 +63,7 @@ export default function Home() {
             <Text fontWeight="bold" fontSize="sm" mb={1}>
               {t("home.setup.setupProgressTitle")}
             </Text>
-            <Progress
+            <ProgressRoot
               value={50}
               size="sm"
               colorScheme="blue"

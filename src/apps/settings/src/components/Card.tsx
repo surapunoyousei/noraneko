@@ -1,13 +1,6 @@
-import {
-  Divider,
-  HStack,
-  Text,
-  Link,
-  Spacer,
-  useColorModeValue,
-  Flex,
-} from "@chakra-ui/react";
+import { Separator, HStack, Text, Link, Spacer, Flex } from "@chakra-ui/react";
 import type React from "react";
+import { useColorMode, useColorModeValue } from "./ui/color-mode";
 
 function Card({
   title,
@@ -68,7 +61,7 @@ function Footer({
 }) {
   return (
     <>
-      <Divider ml={"-20px"} pr={"40px"} mt={4} />
+      <Separator ml={"-20px"} pr={"40px"} mt={4} />
       <Link
         href={footerLink}
         _hover={{ textDecoration: "none" }}

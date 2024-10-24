@@ -1,6 +1,7 @@
 import {
   createSystem,
   defaultBaseConfig,
+  defaultSystem,
   type SystemConfig,
 } from "@chakra-ui/react";
 
@@ -33,5 +34,5 @@ const customColorConfig: SystemConfig = {
   },
 };
 
-const customTheme = createSystem(defaultBaseConfig, customColorConfig);
+const customTheme = defaultSystem;
 export default customTheme;

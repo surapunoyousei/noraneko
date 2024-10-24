@@ -12,7 +12,7 @@ import { useEffect } from "react";
 import { useTranslation } from "react-i18next";
 
 function Sidebar() {
-  const [isMobile] = useMediaQuery(["(max-width: 768px)"], { ssr: true });
+  const [isMobile] = [false]; //useMediaQuery(["(max-width: 768px)"], { ssr: true });
   const location = useLocation();
   const pageData = usePageData();
   const { t } = useTranslation();

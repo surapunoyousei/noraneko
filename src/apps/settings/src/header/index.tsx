@@ -7,19 +7,17 @@ import {
   IconButton,
   Image,
   Input,
-  InputGroup,
-  InputLeftElement,
-  Menu,
-  MenuButton,
+  MenuContent,
   MenuItem,
-  MenuList,
+  MenuRoot,
+  MenuTrigger,
   Spacer,
   Text,
-  useColorMode,
-  useColorModeValue,
 } from "@chakra-ui/react";
 import i18n from "../i18n";
 import { useTranslation } from "react-i18next";
+import { useColorMode, useColorModeValue } from "../components/ui/color-mode";
+import { InputGroup } from "../components/ui/input-group";
 
 function Header() {
   const { t } = useTranslation();
@@ -65,19 +63,19 @@ function Header() {
       <Text py={0} fontSize="2xl" pr={10}>
         {t("header.title")}
       </Text>
-      <HStack spacing={2} maxW={"100%"} flex="1 1 auto">
+      <HStack gap={2} maxW={"100%"} flex="1 1 auto">
         <form onSubmit={handleSearch} style={{ width: "100%" }}>
           <InputGroup
             borderRadius={"8px"}
             maxW={"750px"}
             bg={inputBgColor}
             border={"1px solid transparent"}
-          >
-            <InputLeftElement pointerEvents="none">
+            startElement={
               <IconIcRoundSearch
                 style={{ fontSize: "20px", color: "currentColor" }}
               />
-            </InputLeftElement>
+            }
+          >
             <Input
               type="text"
               placeholder={t("header.searchPlaceholder")}
@@ -89,23 +87,27 @@ function Header() {
         </form>
       </HStack>
       <Spacer />
-      <Menu>
-        <MenuButton as={IconButton} icon={<IconIcRoundLanguage />} />
-        <MenuList>
-          <MenuItem onClick={() => i18n.changeLanguage("ja")}>日本語</MenuItem>
-          <MenuItem onClick={() => i18n.changeLanguage("en")}>English</MenuItem>
-        </MenuList>
-      </Menu>
+      <MenuRoot>
+        <MenuTrigger style={{ fontSize: "16px", color: "currentColor" }}>
+          <IconIcRoundLanguage />
+        </MenuTrigger>
+        <MenuContent>
+          <MenuItem onClick={() => i18n.changeLanguage("ja")} value="ja">
+            日本語
+          </MenuItem>
+          <MenuItem onClick={() => i18n.changeLanguage("en")} value="en">
+            English
+          </MenuItem>
+        </MenuContent>
+      </MenuRoot>
       <IconButton
-        icon={
-          <IconLineMdLightDark
-            style={{ fontSize: "16px", color: "currentColor" }}
-          />
-        }
         aria-label={t("header.darkMode")}
         onClick={toggleColorMode}
         mx={4}
-      />
+        style={{ fontSize: "16px", color: "currentColor" }}
+      >
+        <IconLineMdLightDark />
+      </IconButton>
     </Flex>
   );
 }
