@@ -1,20 +1,19 @@
 import {
   createSystem,
   defaultBaseConfig,
-  defineTokens,
   type SystemConfig,
 } from "@chakra-ui/react";
 
 const customColorConfig: SystemConfig = {
   theme: {
     tokens: {
-      colors: defineTokens.colors({
+      colors: {
         blue: {
           400: { value: "#8ab4f8" },
           500: { value: "#3182F6" },
           600: { value: "#2b6cb0" },
         },
-      }),
+      },
     },
   },
   globalCss: {
