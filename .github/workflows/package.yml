@@ -8,10 +8,16 @@ on:
   workflow_dispatch:
     inputs:
       platform:
-        type: choice
-        options:
-          - win-x64
-          - linux-x64
+        type: string
+        default: win-x64
+      runtime_artifact_workflow_run_id:
+        type: string
+        required: true
+  workflow_call:
+    inputs:
+      platform:
+        type: string
+        default: win-x64
       runtime_artifact_workflow_run_id:
         type: string
         required: true
